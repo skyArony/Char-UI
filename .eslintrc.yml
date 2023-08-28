@@ -5,6 +5,7 @@ extends:
   - standard-with-typescript
   - plugin:vue/vue3-essential
   - "@unocss"
+  - "./.eslintrc-auto-import.json"
 parserOptions:
   ecmaVersion: latest
   sourceType: module
