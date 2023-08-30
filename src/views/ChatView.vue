@@ -1,6 +1,36 @@
+<script setup lang="ts">
+</script>
+
 <template>
-  <div class="w-full h-100vh bg-cyan-300 flex justify-center items-center">
-    <div class="w-1200px h-1000px max-w-80% max-h-80% h-800px  shadow-md rounded-xl bg-red-300"></div>
+  <div class="chat-view">
+    <div class="chat-window">
+      <div class="bg-amber"></div>
+      <SessionTitle class="session-title bg-blue" />
+      <div class="session-list bg-red"></div>
+      <div class="bg-green"></div>
+      <div class="bg-gray"></div>
+    </div>
   </div>
 </template>
 
+<style scoped>
+.chat-view {
+  --at-apply: bg-cyan-300
+  --at-apply: w-full min-h-screen
+  --at-apply: flex justify-center items-center
+}
+
+.chat-window {
+  --at-apply: bg-red-300
+  --at-apply: w-full h-full min-w-840px min-h-540px max-w-80% max-h-85% m-y-3rem
+  --at-apply: shadow-md rounded-xl
+  display: grid;
+  grid-template-columns: 250px auto;
+  grid-template-rows: 60px auto 170px;
+}
+
+.session-list {
+  grid-row-start: span 2;
+}
+
+</style>

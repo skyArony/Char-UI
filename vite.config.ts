@@ -18,6 +18,7 @@ export default defineConfig({
     AutoImport({
       imports: ["vue", "vue-router", "@vueuse/core"],
       resolvers: [ElementPlusResolver(), AntDesignVueResolver()],
+      dts: true,
       eslintrc: {
         enabled: true,
       },
