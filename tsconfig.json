@@ -1,6 +1,7 @@
 {
   "files": [],
   "include": [
+    "src/**/*",
     "./.eslintrc.cjs",
     "./components.d.ts",
     "./auto-imports.d.ts",
@@ -15,6 +16,7 @@
     }
   ],
   "compilerOptions": {
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "types": ["unplugin-icons/types/vue"]
   }
 }
