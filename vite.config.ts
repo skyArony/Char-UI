@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from "node:url";
 
 import UnoCSS from "unocss/vite";
+import Icons from "unplugin-icons/vite";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import AutoImport from "unplugin-auto-import/vite";
@@ -9,12 +10,14 @@ import {
   AntDesignVueResolver,
   ElementPlusResolver,
 } from "unplugin-vue-components/resolvers";
+import IconsResolver from "unplugin-icons/resolver";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     UnoCSS(),
+    Icons(),
     AutoImport({
       imports: ["vue", "vue-router", "@vueuse/core"],
       resolvers: [ElementPlusResolver(), AntDesignVueResolver()],
@@ -24,7 +27,11 @@ export default defineConfig({
       },
     }),
     Components({
-      resolvers: [ElementPlusResolver(), AntDesignVueResolver()],
+      resolvers: [
+        ElementPlusResolver(),
+        AntDesignVueResolver(),
+        IconsResolver(),
+      ],
       dts: true,
     }),
   ],

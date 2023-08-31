@@ -1,24 +1,20 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "files": [],
   "include": [
-    "env.d.ts",
-    "src/**/*",
-    "src/**/*.vue",
-    ".eslintrc.cjs",
+    "./.eslintrc.cjs",
     "./components.d.ts",
-    "./auto-imports.d.ts"
+    "./auto-imports.d.ts",
+    "./uno.config.ts"
   ],
-  "exclude": ["src/**/__tests__/*"],
-  "compilerOptions": {
-    "composite": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
   "references": [
     {
       "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "strictNullChecks": true
+  }
 }
