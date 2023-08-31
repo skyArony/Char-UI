@@ -1,30 +1,27 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import ChatView from '../views/ChatView.vue'
-import FrameView from '../views/FrameView.vue'
+import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      component: FrameView,
+      path: "/",
+      component: async () => await import("../views/FrameView.vue"),
       children: [
         {
-          path: '',
-          component: HomeView
+          path: "",
+          component: async () => await import("../views/HomeView.vue"),
         },
         {
-          path: 'chat',
-          component: ChatView
+          path: "chat",
+          component: async () => await import("../views/ChatView.vue"),
         },
         {
-          path: 'about',
-          component: async () => await import('../views/AboutView.vue') // 懒加载写法
-        }
-      ]
-    }
-  ]
-})
+          path: "about",
+          component: async () => await import("../views/AboutView.vue"),
+        },
+      ],
+    },
+  ],
+});
 
-export default router
+export default router;

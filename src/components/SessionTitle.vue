@@ -7,9 +7,7 @@ const props = defineProps<Props>();
 </script>
 
 <template>
-  <div>
-    <h1>{{ props.sessionTitle }}</h1>
+  <div class="flex items-center p-1rem">
+    <span class="text-2xl font-medium">{{ props.sessionTitle }}</span>
   </div>
 </template>
-
-<style scoped></style>

@@ -3,7 +3,7 @@
 <template>
   <div class="chat-view">
     <div class="chat-window">
-      <div class="bg-amber" />
+      <SessionManage class="bg-amber" />
       <SessionTitle session-title="ABC" class="session-title bg-blue" />
       <div class="session-list bg-red" />
       <div class="bg-green" />
