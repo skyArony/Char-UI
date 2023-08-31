@@ -1,12 +1,15 @@
 <script setup lang="ts">
-const sessionTitle = ref("Session Title");
+interface Props {
+  sessionTitle: string;
+}
+
+const props = defineProps<Props>();
 </script>
 
 <template>
   <div>
-    <h1>{{ sessionTitle }}</h1>
+    <h1>{{ props.sessionTitle }}</h1>
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
