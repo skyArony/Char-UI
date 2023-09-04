@@ -8,8 +8,8 @@ module.exports = {
     "standard-with-typescript",
     "plugin:vue/vue3-recommended",
     "@unocss",
-    "./.eslintrc-auto-import.json",
     "plugin:prettier/recommended",
+    "./.eslintrc-auto-import.json",
   ],
   parserOptions: {
     parser: "@typescript-eslint/parser",

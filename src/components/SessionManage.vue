@@ -46,6 +46,6 @@ const keyword = ref<string>("");
 }
 
 .session-search input {
-  --at-apply: bg-dark placeholder-gray-4 color-gray-2 caret-blue;
+  --at-apply: bg-dark placeholder-gray-4 text-gray-2 caret-blue;
 }
 </style>

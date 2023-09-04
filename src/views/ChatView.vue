@@ -7,7 +7,7 @@
       <SessionTitle session-title="ABC" class="session-title" />
       <div class="session-list bg-red" />
       <div class="bg-green" />
-      <div class="bg-gray" />
+      <MessageInput />
     </div>
   </div>
 </template>
