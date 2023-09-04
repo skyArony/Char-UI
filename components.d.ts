@@ -11,6 +11,7 @@ declare module 'vue' {
     AButton: typeof import('ant-design-vue/es')['Button']
     AInput: typeof import('ant-design-vue/es')['Input']
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElInput: typeof import('element-plus/es')['ElInput']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
@@ -22,11 +23,18 @@ declare module 'vue' {
     IIconAccessibility: typeof import('~icons/ic/on-accessibility')['default']
     IIconParkAbnormal: typeof import('~icons/icon-park/abnormal')['default']
     MessageInput: typeof import('./src/components/MessageInput.vue')['default']
+    MessageItem: typeof import('./src/components/MessageItem.vue')['default']
+    MessageList: typeof import('./src/components/MessageList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SessionItem: typeof import('./src/components/SessionItem.vue')['default']
+    SessionList: typeof import('./src/components/SessionList.vue')['default']
     SessionManage: typeof import('./src/components/SessionManage.vue')['default']
     SessionTitle: typeof import('./src/components/SessionTitle.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vInfiniteScroll: typeof import('element-plus/es')['ElInfiniteScroll']
   }
 }

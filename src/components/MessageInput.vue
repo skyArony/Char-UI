@@ -8,22 +8,14 @@ const sendMessage = (): void => {
 </script>
 
 <template>
-  <div class="border-0 border-t-.5 border-gray-1 border-solid p-t-1rem">
-    <!-- <el-input
-      v-model="message"
-      type="textarea"
-      resize="none"
-      class="h-full max-h-full overflow-y-auto"
-      @keyup.enter="sendMessage"
-    /> -->
-    <!-- <a-textarea
-      v-model="message"
-      :bordered="false"
-      class="max-h-full text-base text-white min-h-full!"
-    /> -->
+  <div class="border-0 border-t-.5 border-gray-7 border-solid p-.5rem p-t-1rem">
     <a-textarea
       v-model="message"
-      class="max-h-full text-base text-white min-h-full!"
+      :bordered="false"
+      class="max-h-full font-size-1em tracking-wide text-white subpixel-antialiased min-h-full! resize-none!"
+      @keyup.enter="sendMessage"
     />
   </div>
 </template>
+
+<style scoped></style>
