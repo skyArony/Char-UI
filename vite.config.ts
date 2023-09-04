@@ -29,7 +29,7 @@ export default defineConfig({
     Components({
       resolvers: [
         ElementPlusResolver(),
-        AntDesignVueResolver(),
+        AntDesignVueResolver({ importStyle: false }),
         IconsResolver(),
       ],
       dts: true,

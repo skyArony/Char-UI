@@ -8,6 +8,8 @@ const props = defineProps<Props>();
 
 <template>
   <div class="flex items-center p-1rem">
-    <span class="text-2xl font-medium">{{ props.sessionTitle }}</span>
+    <span class="text-2xl font-medium text-gray-2">{{
+      props.sessionTitle
+    }}</span>
   </div>
 </template>
