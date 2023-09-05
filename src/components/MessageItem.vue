@@ -1,40 +1,28 @@
+<script setup lang="ts">
+export interface MessageProps {
+  avatar: string;
+  message: string;
+  direction: "left" | "right";
+}
+
+const props = defineProps<MessageProps>();
+</script>
+
 <template>
   <div class="chat-bubble-container" :class="direction">
-    <template v-if="direction === 'left'">
-      <img class="avatar" src="/saber.jpg" :alt="altText" />
+    <template v-if="props.direction === 'left'">
+      <img class="avatar" :src="props.avatar" />
       <div class="w-6px"></div>
     </template>
     <div class="chat-bubble">
-      <slot></slot>
+      {{ props.message }}
     </div>
-    <template v-if="direction === 'right'">
+    <template v-if="props.direction === 'right'">
       <div class="w-6px"></div>
-      <img class="avatar" src="/saber.jpg" :alt="altText" />
+      <img class="avatar" :src="props.avatar" />
     </template>
   </div>
 </template>
-
-<script>
-export default {
-  props: {
-    avatar: {
-      type: String,
-      required: true,
-    },
-    altText: {
-      type: String,
-      required: false,
-      default: "Avatar",
-    },
-    direction: {
-      type: String,
-      required: false,
-      default: "left",
-      validator: (value) => ["left", "right"].includes(value),
-    },
-  },
-};
-</script>
 
 <style scoped>
 :host {
@@ -44,7 +32,7 @@ export default {
 .chat-bubble-container {
   display: flex;
   width: 100%;
-  margin: 10px 0;
+  margin: 12px 0;
   align-items: flex-start;
   --at-apply: subpixel-antialiased text-base tracking-wide;
 }
@@ -58,6 +46,7 @@ export default {
 }
 
 .chat-bubble {
+  white-space: pre-wrap;
   position: relative;
   max-width: 70%;
   padding: 10px;

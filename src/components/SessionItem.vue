@@ -1,12 +1,12 @@
 <script setup lang="ts">
-interface Props {
+export interface SessionProps {
   avatar: string;
   name: string;
   message: string;
   active: boolean;
 }
 
-const props = defineProps<Props>();
+const props = defineProps<SessionProps>();
 </script>
 
 <template>

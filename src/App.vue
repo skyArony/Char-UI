@@ -7,6 +7,8 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Chrome、Edge 和 Safari */
