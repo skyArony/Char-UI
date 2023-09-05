@@ -15,7 +15,7 @@ const select = (item: (typeof mockData)[0]): void => {
 </script>
 
 <template>
-  <ul class="infinite-list" style="overflow: auto">
+  <ul class="infinite-list scroll-container" style="overflow: auto">
     <SessionItem
       v-for="item in mockDataRef"
       :key="item.name"

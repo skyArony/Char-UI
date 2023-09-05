@@ -26,6 +26,15 @@ const keyword = ref<string>("");
 .content {
   --at-apply: flex items-center p-1rem bg-dark-2;
 }
+
+.session-search:hover {
+  border-color: rgb(52, 211, 153);
+}
+
+.button-search:hover {
+  border-color: rgb(52, 211, 153);
+}
+
 .icon-add {
   --at-apply: text-base text-gray-4;
 }
