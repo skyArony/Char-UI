@@ -32,7 +32,7 @@ const select = (item: SessionProps[][0]): void => {
 
 <style scoped>
 .infinite-list {
-  --at-apply: h-full p-x-10px;
+  --at-apply: h-full p-x-10px p-b-1rem;
   --at-apply: bg-dark-2;
 }
 
