@@ -21,7 +21,7 @@
 
 .chat-window {
   --at-apply: bg-dark;
-  --at-apply: w-full h-full min-w-840px min-h-540px max-w-70% max-h-85% m-y-3rem;
+  --at-apply: w-full h-full min-w-840px min-h-540px max-w-60% max-h-85% m-y-3rem;
   --at-apply: rounded-xl overflow-hidden;
   display: grid;
   grid-template-columns: 270px auto;

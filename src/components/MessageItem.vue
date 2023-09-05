@@ -48,7 +48,8 @@ const props = defineProps<MessageProps>();
 .chat-bubble {
   white-space: pre-wrap;
   position: relative;
-  max-width: 70%;
+  width: 400px;
+  max-width: 60%;
   padding: 10px;
   border-radius: 7px;
   font-size: 14px;
