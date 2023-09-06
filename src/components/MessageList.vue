@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { type MessageProps } from "./MessageItem.vue";
+import { getMessageList } from "../api/chat";
+import { type MessageItemProps } from "./MessageItem.vue";
 
-// 构造 Fake Data
-const mockData: MessageProps[] = Array.from({ length: 20 }, (_, i) => ({
-  avatar: "/saber.jpg",
-  message: `你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？你在吗？${i}`,
-  direction: Math.random() > 0.5 ? "left" : "right",
-}));
-const mockDataRef = ref<MessageProps[]>(mockData);
+const sessionList = ref<MessageItemProps[]>([]);
+
+onMounted(async () => {
+  sessionList.value = getMessageList();
+  console.log(sessionList);
+});
 </script>
 
 <template>
   <ul class="infinite-list" style="overflow: auto">
     <MessageItem
-      v-for="item in mockDataRef"
+      v-for="item in sessionList"
       :key="item.message"
       :avatar="item.avatar"
       :message="item.message"

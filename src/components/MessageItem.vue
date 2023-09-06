@@ -1,11 +1,11 @@
 <script setup lang="ts">
-export interface MessageProps {
+export interface MessageItemProps {
   avatar: string;
   message: string;
   direction: "left" | "right";
 }
 
-const props = defineProps<MessageProps>();
+const props = defineProps<MessageItemProps>();
 </script>
 
 <template>
@@ -48,7 +48,6 @@ const props = defineProps<MessageProps>();
 .chat-bubble {
   white-space: pre-wrap;
   position: relative;
-  width: 400px;
   max-width: 60%;
   padding: 10px;
   border-radius: 7px;
