@@ -1,25 +1,21 @@
 <script setup lang="ts">
-export interface SessionProps {
+export interface SessionItemProps {
   avatar: string;
   name: string;
   message: string;
   active: boolean;
 }
 
-const props = defineProps<SessionProps>();
+const props = defineProps<SessionItemProps>();
 </script>
 
 <template>
   <div class="session" :class="{ active: props.active }">
     <el-avatar :size="56" :src="props.avatar" class="avatar" />
-    <span
-      class="flex items-center p-t-4px text-base tracking-wide text-white subpixel-antialiased text-shadow-md"
-    >
+    <span class="session-name">
       {{ props.name }}
     </span>
-    <span
-      class="flex items-center p-b-4px text-sm text-gray-1 subpixel-antialiased text-shadow-md"
-    >
+    <span class="session-message">
       {{ props.message }}
     </span>
   </div>
@@ -39,6 +35,20 @@ const props = defineProps<SessionProps>();
     rgb(52, 211, 153),
     rgb(59, 130, 246)
   );
+}
+
+.session-name {
+  --at-apply: grid-self-center truncate text-base tracking-wide text-white
+    subpixel-antialiased text-shadow-md;
+}
+
+.session-message {
+  --at-apply: grid-self-center truncate text-sm text-gray-4 subpixel-antialiased
+    text-shadow-md;
+}
+
+.session.active .session-message {
+  --at-apply: text-gray-2;
 }
 
 .avatar {

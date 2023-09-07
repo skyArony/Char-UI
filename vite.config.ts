@@ -11,7 +11,6 @@ import {
   ElementPlusResolver,
 } from "unplugin-vue-components/resolvers";
 import IconsResolver from "unplugin-icons/resolver";
-import { viteMockServe } from "vite-plugin-mock";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -35,7 +34,6 @@ export default defineConfig({
       ],
       dts: true,
     }),
-    viteMockServe(),
   ],
   resolve: {
     alias: {

@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { type SessionProps } from "./SessionItem.vue";
+import { getSessionList } from "../api/chat";
+import { type SessionItemProps } from "./SessionItem.vue";
 
-// 构造 Fake Data
-const mockData = Array.from({ length: 20 }, (_, i) => ({
-  avatar: "/saber.jpg",
-  name: "Saber",
-  message: `你在吗？${i}`,
-  active: i === 3,
-}));
-const mockDataRef = ref<SessionProps[]>(mockData);
+const sessionList = ref<SessionItemProps[]>([]);
 
-const select = (item: SessionProps[][0]): void => {
-  mockDataRef.value.forEach((item) => (item.active = false));
+onMounted(async () => {
+  sessionList.value = getSessionList();
+  console.log(sessionList);
+});
+
+const select = (item: SessionItemProps[][0]): void => {
+  sessionList.value.forEach((item) => (item.active = false));
   item.active = true;
 };
 </script>
@@ -19,7 +18,7 @@ const select = (item: SessionProps[][0]): void => {
 <template>
   <ul class="infinite-list scroll-container" style="overflow: auto">
     <SessionItem
-      v-for="item in mockDataRef"
+      v-for="item in sessionList"
       :key="item.name"
       :avatar="item.avatar"
       :name="item.name"
