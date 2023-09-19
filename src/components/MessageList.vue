@@ -1,23 +1,15 @@
 <script setup lang="ts">
-import { getMessageList } from "../api/chat";
-import { type MessageItemProps } from "./MessageItem.vue";
+import { useActiveSessionStore } from "../stores/activeSession";
 
-const sessionList = ref<MessageItemProps[]>([]);
-
-onMounted(async () => {
-  sessionList.value = getMessageList();
-  console.log(sessionList);
-});
+const activeSessionStore = useActiveSessionStore();
 </script>
 
 <template>
   <ul class="infinite-list" style="overflow: auto">
     <MessageItem
-      v-for="item in sessionList"
-      :key="item.message"
-      :avatar="item.avatar"
-      :message="item.message"
-      :direction="item.direction"
+      v-for="message in activeSessionStore.messageList"
+      :key="message.id"
+      v-bind="message"
     />
   </ul>
 </template>

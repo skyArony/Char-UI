@@ -1,12 +1,17 @@
 <script setup lang="ts">
-export interface SessionItemProps {
-  avatar: string;
+import { type MessageItem } from "./MessageItem.vue";
+
+// ======================== props ========================
+export interface SessionItem {
+  id: string;
   name: string;
-  message: string;
+  avatar: string;
+  messageList: MessageItem[];
+}
+interface IsActive {
   active: boolean;
 }
-
-const props = defineProps<SessionItemProps>();
+const props = defineProps<SessionItem & IsActive>();
 </script>
 
 <template>
@@ -16,7 +21,10 @@ const props = defineProps<SessionItemProps>();
       {{ props.name }}
     </span>
     <span class="session-message">
-      {{ props.message }}
+      {{
+        props.messageList &&
+        (props.messageList[props.messageList.length - 1]?.message ?? "")
+      }}
     </span>
   </div>
 </template>

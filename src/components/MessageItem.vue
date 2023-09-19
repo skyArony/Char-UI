@@ -1,23 +1,25 @@
 <script setup lang="ts">
-export interface MessageItemProps {
+export interface MessageItem {
+  id: number;
   avatar: string;
   message: string;
-  direction: "left" | "right";
+  time: Date;
+  isFromMe: boolean;
 }
 
-const props = defineProps<MessageItemProps>();
+const props = defineProps<MessageItem>();
 </script>
 
 <template>
-  <div class="chat-bubble-container" :class="direction">
-    <template v-if="props.direction === 'left'">
+  <div class="chat-bubble-container" :class="isFromMe ? 'right' : 'left'">
+    <template v-if="!isFromMe">
       <img class="avatar" :src="props.avatar" />
       <div class="w-6px"></div>
     </template>
     <div class="chat-bubble">
       {{ props.message }}
     </div>
-    <template v-if="props.direction === 'right'">
+    <template v-if="isFromMe">
       <div class="w-6px"></div>
       <img class="avatar" :src="props.avatar" />
     </template>

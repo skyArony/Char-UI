@@ -1,4 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { getSessionList } from "../api/chat";
+import { useSessionListStore } from "../stores/sessionList";
+
+// 获取会话列表
+const sessionListStore = useSessionListStore();
+sessionListStore.sessionList = getSessionList();
+</script>
 
 <template>
   <div class="chat-view">

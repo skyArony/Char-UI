@@ -1,30 +1,28 @@
 <script setup lang="ts">
-import { getSessionList } from "../api/chat";
-import { type SessionItemProps } from "./SessionItem.vue";
+import { useSessionListStore } from "../stores/sessionList";
+import { useActiveSessionStore } from "../stores/activeSession";
+import { SessionItem } from "./SessionItem.vue";
 
-const sessionList = ref<SessionItemProps[]>([]);
-
-onMounted(async () => {
-  sessionList.value = getSessionList();
-  console.log(sessionList);
-});
-
-const select = (item: SessionItemProps[][0]): void => {
-  sessionList.value.forEach((item) => (item.active = false));
-  item.active = true;
+const sessionListStore = useSessionListStore();
+const activeSessionStore = useActiveSessionStore();
+const select = (session: SessionItem): void => {
+  activeSessionStore.sessionKey = session.id;
+  activeSessionStore.$patch({
+    sessionKey: session.id,
+    sessionTitle: session.name,
+    messageList: session.messageList,
+  });
 };
 </script>
 
 <template>
   <ul class="infinite-list scroll-container" style="overflow: auto">
     <SessionItem
-      v-for="item in sessionList"
-      :key="item.name"
-      :avatar="item.avatar"
-      :name="item.name"
-      :message="item.message"
-      :active="item.active"
-      @click="select(item)"
+      v-for="session in sessionListStore.sessionList"
+      :key="session.id"
+      :active="session.id === activeSessionStore.sessionKey"
+      v-bind="session"
+      @click="select(session)"
     />
   </ul>
 </template>
