@@ -1,5 +1,5 @@
-import { defineStore } from "pinia";
 import { ref } from "vue";
+import { defineStore } from "pinia";
 import type { MessageItem } from "../components/MessageItem.vue";
 
 export const useActiveSessionStore = defineStore("activeSession", () => {
@@ -8,5 +8,13 @@ export const useActiveSessionStore = defineStore("activeSession", () => {
   const sessionTitle = ref("");
   const messageList = ref<MessageItem[]>([]);
 
-  return { sessionKey, sessionTitle, messageList };
+  // ===================== Action =====================
+  function addMessage(message: MessageItem): void {
+    if (sessionTitle.value === "") {
+      return;
+    }
+    messageList.value.push(message);
+  }
+
+  return { sessionKey, sessionTitle, messageList, addMessage };
 });

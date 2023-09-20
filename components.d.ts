@@ -27,6 +27,7 @@ declare module 'vue' {
     MessageList: typeof import('./src/components/MessageList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Session: typeof import('./src/components/Session.vue')['default']
     SessionItem: typeof import('./src/components/SessionItem.vue')['default']
     SessionList: typeof import('./src/components/SessionList.vue')['default']
     SessionManage: typeof import('./src/components/SessionManage.vue')['default']

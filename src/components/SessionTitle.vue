@@ -1,9 +1,6 @@
 <script setup lang="ts">
-interface Props {
-  sessionTitle: string;
-}
-
-const props = defineProps<Props>();
+import { useActiveSessionStore } from "../stores/activeSession";
+const activeSessionStore = useActiveSessionStore();
 </script>
 
 <template>
@@ -11,7 +8,7 @@ const props = defineProps<Props>();
     class="flex items-center border-0 border-b-.5 border-gray-7 border-solid p-1rem"
   >
     <span class="text-2xl font-medium text-gray-2">{{
-      props.sessionTitle
+      activeSessionStore.sessionTitle
     }}</span>
   </div>
 </template>

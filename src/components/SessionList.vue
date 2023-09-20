@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useSessionListStore } from "../stores/sessionList";
 import { useActiveSessionStore } from "../stores/activeSession";
-import { SessionItem } from "./SessionItem.vue";
+import { type SessionProps } from "./SessionItem.vue";
 
 const sessionListStore = useSessionListStore();
 const activeSessionStore = useActiveSessionStore();
-const select = (session: SessionItem): void => {
+const select = (session: SessionProps): void => {
   activeSessionStore.sessionKey = session.id;
   activeSessionStore.$patch({
     sessionKey: session.id,

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { getSessionList } from "../api/chat";
 import { useSessionListStore } from "../stores/sessionList";
+import { useGlobalStore } from "../stores/global";
+
+const globalStore = useGlobalStore();
+globalStore.selfAvatar = "https://avatars.githubusercontent.com/u/499270?v=4";
 
 // 获取会话列表
 const sessionListStore = useSessionListStore();
@@ -11,7 +15,7 @@ sessionListStore.sessionList = getSessionList();
   <div class="chat-view">
     <div class="chat-window">
       <SessionManage />
-      <SessionTitle session-title="Saber" class="session-title" />
+      <SessionTitle class="session-title" />
       <SessionList class="session-list" />
       <MessageList />
       <MessageInput />
