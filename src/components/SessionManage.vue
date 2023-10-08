@@ -1,19 +1,30 @@
 <script setup lang="ts">
 import IconSearch from "~icons/ph/magnifying-glass-light";
 import IconAdd from "~icons/clarity/plus-line";
+import IconClear from "~icons/material-symbols/cancel";
 
-const keyword = ref<string>("");
+import { useGlobalStore } from "../stores/global";
+
+const globalStore = useGlobalStore();
 </script>
 
 <template>
   <div class="content">
-    <a-auto-complete class="flex-auto">
-      <a-input v-model="keyword" placeholder="搜索" class="session-search">
-        <template #prefix>
-          <IconSearch class="icon-search" />
-        </template>
-      </a-input>
-    </a-auto-complete>
+    <a-input
+      v-model:value="globalStore.keyword"
+      placeholder="搜索"
+      class="session-search"
+      allow-clear
+    >
+      <template #prefix>
+        <IconSearch class="icon-search" />
+      </template>
+      <template #clearIcon>
+        <div class="flex flex-items-center">
+          <IconClear class="icon-clear" />
+        </div>
+      </template>
+    </a-input>
     <a-button class="button-search">
       <template #icon>
         <IconAdd class="icon-add" />
@@ -41,6 +52,10 @@ const keyword = ref<string>("");
 
 .icon-search {
   --at-apply: text-base text-gray-4;
+}
+
+.icon-clear {
+  --at-apply: text-base text-gray-2;
 }
 
 .button-search {

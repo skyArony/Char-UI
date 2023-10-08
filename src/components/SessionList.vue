@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useSessionListStore } from "../stores/sessionList";
 import { useActiveSessionStore } from "../stores/activeSession";
+import { useGlobalStore } from "../stores/global";
 import { type SessionProps } from "./SessionItem.vue";
 
 const sessionListStore = useSessionListStore();
 const activeSessionStore = useActiveSessionStore();
+const globalStore = useGlobalStore();
 const select = (session: SessionProps): void => {
   activeSessionStore.sessionKey = session.id;
   activeSessionStore.$patch({
@@ -19,6 +21,7 @@ const select = (session: SessionProps): void => {
   <ul class="infinite-list scroll-container" style="overflow: auto">
     <SessionItem
       v-for="session in sessionListStore.sessionList"
+      v-show="session.name.includes(globalStore.keyword)"
       :key="session.id"
       :active="session.id === activeSessionStore.sessionKey"
       v-bind="session"
