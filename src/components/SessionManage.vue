@@ -2,10 +2,13 @@
 import IconSearch from "~icons/ph/magnifying-glass-light";
 import IconAdd from "~icons/clarity/plus-line";
 import IconClear from "~icons/material-symbols/cancel";
-
 import { useGlobalStore } from "../stores/global";
 
 const globalStore = useGlobalStore();
+
+const newSession = (): void => {
+  globalStore.openMask = true;
+};
 </script>
 
 <template>
@@ -25,7 +28,7 @@ const globalStore = useGlobalStore();
         </div>
       </template>
     </a-input>
-    <a-button class="button-search">
+    <a-button class="button-search" @click="newSession">
       <template #icon>
         <IconAdd class="icon-add" />
       </template>

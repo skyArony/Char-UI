@@ -3,8 +3,9 @@ import { defineStore } from "pinia";
 
 export const useGlobalStore = defineStore("global", () => {
   // ===================== State =====================
-  const selfAvatar = ref("");
-  const keyword = ref("");
+  const selfAvatar = ref(""); // 用户头像
+  const keyword = ref(""); // 搜索关键词
+  const openMask = ref(false); // 是否打开遮罩层
 
-  return { selfAvatar, keyword };
+  return { selfAvatar, keyword, openMask };
 });

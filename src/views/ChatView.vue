@@ -9,10 +9,39 @@ globalStore.selfAvatar = "https://avatars.githubusercontent.com/u/499270?v=4";
 // 获取会话列表
 const sessionListStore = useSessionListStore();
 sessionListStore.sessionList = getSessionList();
+
+// 关闭遮罩层
+const closeMaskByKeyBoard = (event: KeyboardEvent): void => {
+  if (event.key === "Escape") {
+    globalStore.openMask = false;
+  }
+};
+
+// 关闭遮罩层
+const closeMaskByClick = (event: PointerEvent): void => {
+  globalStore.openMask = false;
+};
+
+// 全局监听 ESC 按键事件
+window.addEventListener("keyup", closeMaskByKeyBoard);
 </script>
 
 <template>
   <div class="chat-view">
+    <Transition name="mask">
+      <div
+        v-show="globalStore.openMask"
+        class="chat-mask"
+        @click="closeMaskByClick"
+      ></div>
+    </Transition>
+    <Transition>
+      <CharacterList
+        v-show="globalStore.openMask"
+        class="character-list"
+        @keyup.esc="closeMask"
+      />
+    </Transition>
     <div class="chat-window">
       <SessionManage />
       <SessionTitle class="session-title" />
@@ -30,9 +59,15 @@ sessionListStore.sessionList = getSessionList();
   --at-apply: flex justify-center items-center;
 }
 
+.chat-mask {
+  --at-apply: bg-dark bg-opacity-50 absolute z-1 backdrop-blur-sm;
+  --at-apply: w-full h-full min-w-840px min-h-540px max-w-65% max-h-85% m-y-3rem;
+  --at-apply: rounded-xl overflow-hidden;
+}
+
 .chat-window {
   --at-apply: bg-dark;
-  --at-apply: w-full h-full min-w-840px min-h-540px max-w-60% max-h-85% m-y-3rem;
+  --at-apply: w-full h-full min-w-840px min-h-540px max-w-65% max-h-85% m-y-3rem;
   --at-apply: rounded-xl overflow-hidden;
   display: grid;
   grid-template-columns: 270px auto;
@@ -45,5 +80,34 @@ sessionListStore.sessionList = getSessionList();
 
 .session-list {
   grid-row-start: span 2;
+}
+
+.character-list {
+  --at-apply: absolute z-2;
+  --at-apply: w-full h-full min-w-540px min-h-340px max-w-50% max-h-60% m-y-3rem;
+  --at-apply: rounded-xl overflow-hidden;
+}
+</style>
+
+<style>
+.v-enter-active,
+.v-leave-active {
+  --at-apply: transition-all duration-300ms ease-in-out;
+}
+
+.v-enter-from,
+.v-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.mask-enter-active,
+.mask-leave-active {
+  --at-apply: transition-all duration-300ms ease-in-out;
+}
+
+.mask-enter-from,
+.mask-leave-to {
+  opacity: 0;
 }
 </style>
