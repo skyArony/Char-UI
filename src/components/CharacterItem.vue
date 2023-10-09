@@ -5,32 +5,31 @@ export interface CharacterItem {
   name: string;
   desc: string;
   tags: string[];
+  opening: string;
 }
 
 const props = defineProps<CharacterItem>();
-
-const bodyStyle = {
-  padding: "0.7rem",
-  backgroundColor: "#1f1f1f",
-};
 </script>
 
 <template>
   <div class="card">
-    <div
-      class="cover"
-      style="
-        background-image: url(https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png);
-      "
-    ></div>
-    <span class="title">凉宫春日凉宫春日凉宫春日凉宫春日</span>
+    <div class="cover" :style="`background-image: url(${props.avatar})`"></div>
+    <span class="title">{{ props.name }}</span>
     <span class="desc">
-      人类一点都不有趣人类一点都不有趣人类一点都不有趣人类一点都不有趣
+      {{ props.desc }}
     </span>
     <div class="tags">
-      <el-tag effect="plain" size="small" color="#ffffff00" :hit="true" round
-        >《Fate》</el-tag
+      <el-tag
+        v-for="tag in props.tags"
+        :key="tag"
+        effect="plain"
+        size="small"
+        color="#ffffff00"
+        :hit="true"
+        round
       >
+        {{ tag }}
+      </el-tag>
     </div>
   </div>
 </template>

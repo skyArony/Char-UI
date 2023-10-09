@@ -1,16 +1,59 @@
+<script setup lang="ts">
+import { getCharacterList } from "../api/chat";
+import { useSessionListStore } from "../stores/sessionList";
+import { useActiveSessionStore } from "../stores/activeSession";
+import { useGlobalStore } from "../stores/global";
+
+// 获取角色列表
+const characterList = getCharacterList();
+
+// 会话
+const sessionListStore = useSessionListStore();
+// 全局
+const globalStore = useGlobalStore();
+// 当前选中的 会话
+const activeSessionStore = useActiveSessionStore();
+
+// 选中角色
+const select = (character: CharacterItem): void => {
+  // 创建会话对象
+  const session: SessionItem = {
+    // 随机字符串 ID
+    id: Math.random().toString(36).substr(2),
+    name: character.name,
+    avatar: character.avatar,
+    messageList: [
+      {
+        id: Date.now(),
+        avatar: character.avatar,
+        message: character.opening,
+        time: new Date(),
+        isFromMe: false,
+      },
+    ],
+  };
+  // 加入会话列表
+  globalStore.openMask = false;
+  sessionListStore.addSession(session);
+  activeSessionStore.sessionId = session.id;
+  activeSessionStore.$patch({
+    sessionId: session.id,
+    sessionTitle: session.name,
+    messageList: session.messageList,
+  });
+};
+</script>
+
 <template>
   <div class="modal">
     <div class="title">新的聊天</div>
     <div class="body">
-      <CharacterItem />
-      <CharacterItem />
-      <CharacterItem />
-      <CharacterItem />
-      <CharacterItem />
-      <CharacterItem />
-      <CharacterItem />
-      <CharacterItem />
-      <CharacterItem />
+      <CharacterItem
+        v-for="character in characterList"
+        :key="character.id"
+        v-bind="character"
+        @click="select(character)"
+      />
     </div>
   </div>
 </template>

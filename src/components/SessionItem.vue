@@ -2,7 +2,7 @@
 import { type MessageItem } from "./MessageItem.vue";
 
 // ======================== props ========================
-export interface SessionProps {
+export interface SessionItem {
   id: string;
   name: string;
   avatar: string;
@@ -11,7 +11,7 @@ export interface SessionProps {
 interface IsActive {
   active: boolean;
 }
-const props = defineProps<SessionProps & IsActive>();
+const props = defineProps<SessionItem & IsActive>();
 </script>
 
 <template>

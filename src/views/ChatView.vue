@@ -39,7 +39,7 @@ window.addEventListener("keyup", closeMaskByKeyBoard);
       <CharacterList
         v-show="globalStore.openMask"
         class="character-list"
-        @keyup.esc="closeMask"
+        @keyup.esc="closeMaskByKeyBoard"
       />
     </Transition>
     <div class="chat-window">

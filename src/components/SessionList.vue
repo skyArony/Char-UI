@@ -2,15 +2,15 @@
 import { useSessionListStore } from "../stores/sessionList";
 import { useActiveSessionStore } from "../stores/activeSession";
 import { useGlobalStore } from "../stores/global";
-import { type SessionProps } from "./SessionItem.vue";
+import { type SessionItem as Session } from "./SessionItem.vue";
 
 const sessionListStore = useSessionListStore();
 const activeSessionStore = useActiveSessionStore();
 const globalStore = useGlobalStore();
-const select = (session: SessionProps): void => {
-  activeSessionStore.sessionKey = session.id;
+const select = (session: Session): void => {
+  activeSessionStore.sessionId = session.id;
   activeSessionStore.$patch({
-    sessionKey: session.id,
+    sessionId: session.id,
     sessionTitle: session.name,
     messageList: session.messageList,
   });
@@ -23,7 +23,7 @@ const select = (session: SessionProps): void => {
       v-for="session in sessionListStore.sessionList"
       v-show="session.name.includes(globalStore.keyword)"
       :key="session.id"
-      :active="session.id === activeSessionStore.sessionKey"
+      :active="session.id === activeSessionStore.sessionId"
       v-bind="session"
       @click="select(session)"
     />
