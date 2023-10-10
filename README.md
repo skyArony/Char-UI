@@ -1,5 +1,10 @@
 # CharUI
 
+像微信一样和 AI 聊天的简洁聊天 UI 界面。
+
+![](doc/example1.png)
+![](doc/example2.png)
+
 ## 快速开始
 
 ```shell
